@@ -152,17 +152,17 @@ REST_FRAMEWORK = {
         'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',  # Use session-based authentication
         'rest_framework.authentication.TokenAuthentication',    # Use token-based authentication
-        'rest_framework_simplejwt.authentication.JWTAuthentication',  # Use JWT Authentication
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',  # Use JWT Authentication
     ),
     'DEFAULT_THROTTLE_RATES':{
-        'anon':'10/minute',
-        'user':'10/minute',
+        'anon':'20/minute',
+        'user':'50/minute',
         'ten':'10/minute',
     },
-    # 'DEFAULT_THROTTLE_CLASSES': [
-    #     'rest_framework.throttling.AnonRateThrottle',
-    #     'rest_framework.throttling.UserRateThrottle'    
-    # ],
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'    
+    ],
     }
 DJOSER = {
     'USER_ID_FIELD':'username',
