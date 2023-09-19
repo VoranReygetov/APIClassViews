@@ -60,12 +60,12 @@ class SingleMenuItemView(MenuItemView):
             return Response(serializer.data)
         return Response({'message': 'Item not found'}, status=status.HTTP_404_NOT_FOUND)
 
-    def update(self, request, pk):
+    def update(self, request, pk, **kwargs):
         if request.user.groups.filter(name='Manager').exists():
-            return super(viewsets.ModelViewSet, self).update(request, pk)
+            return super(viewsets.ModelViewSet, self).update(request, pk, **kwargs)
         else:
             return Response({'message': 'You are not in the right group'}, status=status.HTTP_403_FORBIDDEN)
-
+    
     def destroy(self, request, pk):
         if request.user.groups.filter(name='Manager').exists():
             super(viewsets.ModelViewSet, self).destroy(request, pk)

@@ -24,7 +24,9 @@ class MenuItemSerializer(serializers.ModelSerializer):
     category_id = serializers.IntegerField(write_only=True)
 
     def validate(self, attrs):
-        bleachvalidate(attrs, 'title')
+        if 'title' in self.context['request'].data:
+            bleachvalidate(attrs, 'title')
+            return super().validate(attrs)
         return super().validate(attrs)
 
     class Meta:

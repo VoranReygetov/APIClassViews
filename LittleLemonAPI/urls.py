@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
     path('menu-items', views.MenuItemView.as_view({'get': 'list', 'post': 'create', 'put': 'update', 'patch': 'update', 'delete': 'destroy'})),
-    path('menu-items/<int:pk>', views.SingleMenuItemView.as_view({'get': 'retrieve', 'post': 'create', 'put': 'update', 'patch': 'update', 'delete': 'destroy'})),
+    path('menu-items/<int:pk>', views.SingleMenuItemView.as_view({'get': 'retrieve', 'post': 'create', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'})),
     path('groups/manager/users', views.ManagersView.as_view({'get': 'list', 'post': 'create', 'put': 'update', 'patch': 'update', 'delete': 'destroy'})),
     path('groups/manager/users/<int:pk>', views.SingleManagersView.as_view({'get': 'retrieve', 'post': 'create', 'put': 'update', 'patch': 'update', 'delete': 'destroy'})),
     path('groups/manager/delivery-crew/users', views.DeliveryCrewView.as_view({'get': 'list', 'post': 'create', 'put': 'update', 'patch': 'update', 'delete': 'destroy'})),
